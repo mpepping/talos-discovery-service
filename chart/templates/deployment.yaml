@@ -40,12 +40,22 @@ spec:
         - name: http
           containerPort: 3001
           protocol: TCP
+        {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
-          {{- toYaml .Values.livenessProbe | nindent 12 }}
+          {{- omit .Values.livenessProbe "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        {{- if .Values.readinessProbe.enabled }}
         readinessProbe:
-          {{- toYaml .Values.readinessProbe | nindent 12 }}
+          {{- omit .Values.readinessProbe "enabled" | toYaml | nindent 12 }}
+        {{- end }}
+        volumeMounts:
+        - name: data
+          mountPath: /var/discovery-service
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+      - name: data
+        emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

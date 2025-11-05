@@ -1,6 +1,6 @@
 # Default values for talos-discovery-service
 
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: ghcr.io/mpepping/talos-discovery-service
@@ -85,6 +85,7 @@ affinity:
           topologyKey: kubernetes.io/hostname
 
 livenessProbe:
+  enabled: false
   httpGet:
     path: /healthz
     port: http
@@ -92,6 +93,7 @@ livenessProbe:
   periodSeconds: 10
 
 readinessProbe:
+  enabled: false
   httpGet:
     path: /readyz
     port: http
