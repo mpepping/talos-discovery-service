@@ -1,0 +1,15 @@
+apiVersion: v2
+name: talos-discovery-service
+description: A Helm chart for Talos Discovery Service
+type: application
+version: 0.1.0
+appVersion: "latest"
+keywords:
+  - talos
+  - discovery
+  - kubernetes
+home: https://github.com/siderolabs/discovery-service
+sources:
+  - https://github.com/siderolabs/discovery-service
+maintainers:
+  - name: martijn

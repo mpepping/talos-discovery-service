@@ -1,0 +1,21 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Helm chart
+chart/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
