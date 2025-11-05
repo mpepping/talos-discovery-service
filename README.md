@@ -11,7 +11,7 @@ The Discovery Service provides cluster membership and KubeSpan peer information 
 Build the Docker image:
 
 ```bash
-docker build -t talos-discovery-service:latest .
+docker build -t ghcr.io/mpepping/talos-discovery-service:latest .
 ```
 
 The Dockerfile uses a multi-stage build:
@@ -23,7 +23,7 @@ The Dockerfile uses a multi-stage build:
 Run the container locally:
 
 ```bash
-docker run -p 3000:3000 -p 3001:3001 talos-discovery-service:latest
+docker run -p 3000:3000 -p 3001:3001 ghcr.io/mpepping/talos-discovery-service:latest
 ```
 
 The service exposes two ports:
@@ -48,7 +48,7 @@ Key configuration options in `chart/values.yaml`:
 replicaCount: 2                          # Number of replicas
 
 image:
-  repository: talos-discovery-service
+  repository: ghcr.io/mpepping/talos-discovery-service
   tag: "latest"
 
 service:
@@ -113,6 +113,30 @@ helm upgrade discovery-service ./chart
 
 ```bash
 helm uninstall discovery-service
+```
+
+## Configure Talos to Use Your Instance
+
+Update your Talos machine configuration to point to your custom discovery service endpoint:
+
+```yaml
+cluster:
+  discovery:
+    enabled: true
+    registries:
+      service:
+        endpoint: https://your-discovery-service.example.com
+```
+
+To disable the default public service:
+
+```yaml
+cluster:
+  discovery:
+    enabled: true
+    registries:
+      service:
+        disabled: true
 ```
 
 ## Service Architecture

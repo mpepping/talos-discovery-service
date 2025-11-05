@@ -1,5 +1,5 @@
 # vim:ft=make:
-APP_NAME=ghcr.io/mpepping/discovery-service
+APP_NAME=ghcr.io/mpepping/talos-discovery-service
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 # Auto-detect container runtime
