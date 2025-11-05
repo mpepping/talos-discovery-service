@@ -26,7 +26,7 @@ jobs:
       - name: Package and Push Chart
         run: |
           helm package chart
-          helm push talos-discovery-service-*.tgz oci://ghcr.io/${{ github.repository_owner }}/helm-talos-discovery-service
+          helm push helm-talos-discovery-service-*.tgz oci://ghcr.io/${{ github.repository_owner }}
 
       - name: Test Pull Chart
         run: |

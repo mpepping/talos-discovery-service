@@ -81,7 +81,7 @@ affinity:
               - key: app.kubernetes.io/name
                 operator: In
                 values:
-                  - talos-discovery-service
+                  - helm-talos-discovery-service
           topologyKey: kubernetes.io/hostname
 
 livenessProbe:
