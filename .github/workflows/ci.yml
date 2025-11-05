@@ -83,10 +83,9 @@ jobs:
       - name: Verify multi-platform manifest
         if: github.event_name != 'pull_request'
         run: docker manifest inspect ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.ref_name }}
-
-      - name: Sign Docker image
-        if: github.event_name != 'pull_request'
-        env:
-          TAGS: ${{ steps.meta.outputs.tags }}
-          DIGEST: ${{ steps.build-and-push.outputs.digest }}
-        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+#      - name: Sign Docker image
+#        if: github.event_name != 'pull_request'
+#        env:
+#          TAGS: ${{ steps.meta.outputs.tags }}
+#          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+#        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
