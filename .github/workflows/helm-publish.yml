@@ -26,11 +26,11 @@ jobs:
       - name: Package and Push Chart
         run: |
           helm package chart
-          helm push talos-discovery-service-*.tgz oci://ghcr.io/${{ github.repository_owner }}
+          helm push talos-discovery-service-*.tgz oci://ghcr.io/${{ github.repository_owner }}/helm-talos-discovery-service
 
       - name: Test Pull Chart
         run: |
-          helm pull oci://ghcr.io/${{ github.repository_owner }}/talos-discovery-service --version $(grep '^version:' chart/Chart.yaml | awk '{print $2}')
+          helm pull oci://ghcr.io/${{ github.repository_owner }}/helm-talos-discovery-service --version $(grep '^version:' chart/Chart.yaml | awk '{print $2}')
 
       - name: Logout from registry
         if: always()

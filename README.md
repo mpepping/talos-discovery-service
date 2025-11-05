@@ -34,10 +34,16 @@ The service exposes two ports:
 
 ### Installation
 
-Deploy the chart to your Kubernetes cluster:
+Deploy the chart from the local directory:
 
 ```bash
 helm install discovery-service ./chart
+```
+
+Or install from the OCI registry:
+
+```bash
+helm install discovery-service oci://ghcr.io/mpepping/helm-talos-discovery-service --version 1.0.0
 ```
 
 ### Configuration
@@ -105,8 +111,16 @@ helm install discovery-service ./chart -f custom-values.yaml
 
 ## Upgrading
 
+From local chart:
+
 ```bash
 helm upgrade discovery-service ./chart
+```
+
+From OCI registry:
+
+```bash
+helm upgrade discovery-service oci://ghcr.io/mpepping/helm-talos-discovery-service --version 1.0.0
 ```
 
 ## Uninstalling
