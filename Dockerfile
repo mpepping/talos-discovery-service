@@ -8,7 +8,7 @@ RUN apk add --no-cache git
 WORKDIR /build
 
 # Clone the discovery-service repository
-RUN git clone https://github.com/siderolabs/discovery-service.git .
+RUN git clone https://github.com/mpepping/discovery-service.git .
 
 # Build the binary directly with Go (allow automatic toolchain download)
 # GOARCH will default to the build platform's architecture

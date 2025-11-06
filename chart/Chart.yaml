@@ -10,6 +10,6 @@ keywords:
   - kubernetes
 home: https://github.com/mpepping/talos-discovery-service
 sources:
-  - https://github.com/siderolabs/discovery-service
+  - https://github.com/mpepping/discovery-service
 maintainers:
   - name: martijn

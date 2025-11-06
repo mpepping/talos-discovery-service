@@ -1,6 +1,9 @@
 # Talos Discovery Service
 
-A containerized deployment of the [Talos Discovery Service](https://github.com/siderolabs/discovery-service) with a Helm chart for Kubernetes.
+A containerized deployment of the [Talos Discovery Service](https://github.com/mpepping/discovery-service) with a Helm chart for Kubernetes.
+
+> [!NOTE]
+> This project includes <https://github.com/mpepping/discovery-service> which is a rewrite of the original Talos [Discovery Service](https://github.com/siderolabs/discovery-service). It is not affiliated with or endorsed by the Talos Linux project.
 
 ## Overview
 
@@ -15,6 +18,7 @@ docker build -t ghcr.io/mpepping/talos-discovery-service:latest .
 ```
 
 The Dockerfile uses a multi-stage build:
+
 - **Build stage**: Clones the discovery-service repository and compiles the Go binary
 - **Runtime stage**: Creates a minimal Alpine-based image with the binary
 
@@ -27,6 +31,7 @@ docker run -p 3000:3000 -p 3001:3001 ghcr.io/mpepping/talos-discovery-service:la
 ```
 
 The service exposes two ports:
+
 - **3000**: gRPC API
 - **3001**: HTTP API
 
@@ -51,7 +56,7 @@ helm install discovery-service oci://ghcr.io/mpepping/helm-talos-discovery-servi
 Key configuration options in `chart/values.yaml`:
 
 ```yaml
-replicaCount: 2                          # Number of replicas
+replicaCount: 2 # Number of replicas
 
 image:
   repository: ghcr.io/mpepping/talos-discovery-service
@@ -63,7 +68,7 @@ service:
   httpPort: 3001
 
 ingress:
-  enabled: false                         # Enable ingress
+  enabled: false # Enable ingress
   className: ""
   hosts:
     - host: discovery.example.com
@@ -161,5 +166,5 @@ cluster:
 
 ## Additional Resources
 
-- [Talos Discovery Service GitHub](https://github.com/siderolabs/discovery-service)
+- [Talos Discovery Service GitHub](https://github.com/mpepping/discovery-service)
 - [Talos Linux Documentation](https://www.talos.dev/)
