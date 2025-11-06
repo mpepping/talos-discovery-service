@@ -35,6 +35,12 @@ service:
   grpcPort: 3000
   httpPort: 3001
 
+  # Optional fixed NodePort assignments (used only when type=NodePort)
+  # Leave as null to let Kubernetes auto-assign a port (typically 30000–32767)
+  nodePorts:
+    grpc: null
+    http: null
+
 ingress:
   enabled: false
   className: ""
